@@ -89,7 +89,24 @@ const Home = ({navigation}) => {
     outerContainer: {
       flex: 1,
     },
-    upperBar: {
+    templateContainer: {
+      backgroundColor: 'black',
+      position: 'relative',
+      width: '100%',
+      height: '37%',
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingLeft: '6%',
+    },
+    calenderContainer: {
+      position: 'relative',
+      width: '100%',
+      height: '50%',
+      backgroundColor: 'black',
+      alignItems: 'center',
+      marginTop: 10,
+    },
+    actionBar: {
       position: 'relative',
       justifyContent: 'space-between',
       flexDirection: 'row',
@@ -109,6 +126,13 @@ const Home = ({navigation}) => {
       backgroundColor: 'black',
       paddingBottom: '5%',
     },
+    addTemplateButton: {
+      backgroundColor: 'black',
+      position: 'relative',
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginRight: 20,
+    },
     contentsContainer: {
       position: 'relative',
       width: '100%',
@@ -121,56 +145,20 @@ const Home = ({navigation}) => {
   const renderMeTabContent = () => {
     return (
       <View style={styles.contentsContainer}>
-        <View
-          style={{
-            backgroundColor: 'black',
-            position: 'relative',
-            width: '100%',
-            height: '35%',
-            flexDirection: 'row',
-            alignItems: 'center',
-            paddingLeft: '6%',
-          }}>
-          <View
-            style={{
-              position: 'relative',
-              flexDirection: 'row',
-              backgroundColor: 'black',
-              position: 'relative',
-              width: '97%',
-              height: '90%',
-              alignItems: 'center',
-              padding: '1%',
-            }}>
-            <ScrollView horizontal={true}>
-              <View
-                style={{
-                  backgroundColor: 'black',
-                  position: 'relative',
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                }}>
-                <TouchableOpacity onPress={() => navigation.push('Adding')}>
-                  <AntDesign
-                    name="pluscircleo"
-                    style={{color: '#dddddd', fontSize: 30}}
-                  />
-                </TouchableOpacity>
-              </View>
-              <View style={{position: 'relative', paddingLeft: '2%'}}>
-                <Posts />
-              </View>
-            </ScrollView>
-          </View>
+        <View style={styles.templateContainer}>
+          <ScrollView horizontal={true}>
+            <View style={styles.addTemplateButton}>
+              <TouchableOpacity onPress={() => navigation.push('Adding')}>
+                <AntDesign
+                  name="pluscircleo"
+                  style={{color: '#dddddd', fontSize: 30}}
+                />
+              </TouchableOpacity>
+            </View>
+            <Posts />
+          </ScrollView>
         </View>
-        <View
-          style={{
-            position: 'relative',
-            width: '100%',
-            height: '50%',
-            backgroundColor: 'black',
-            alignItems: 'center',
-          }}>
+        <View style={styles.calenderContainer}>
           <View
             style={{
               position: 'relative',
@@ -213,7 +201,7 @@ const Home = ({navigation}) => {
   return (
     <SafeAreaView style={styles.outerContainer}>
       <StatusBar backgroundColor="black" barStyle="light-content" />
-      <View style={styles.upperBar}>
+      <View style={styles.actionBar}>
         <View>
           <TouchableOpacity>
             <FontAwesome5
