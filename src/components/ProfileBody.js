@@ -1,37 +1,60 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 
 
 
 const ProfileBody = ({
     name,
-    profileImage,
+    profileImage
 }) => {
 
   return (
         <View>
-            <View style={{flexDirection: 'row',
+            <View style={{position:'relative',flexDirection: 'row',
                 alignItems: 'center',
                 justifyContent: 'space-around',
-                paddingVertical: 50,
+                paddingBottom:'15%'
             }}>
-            <View style={{ alignItems: 'center'}}>
-                <Image
-                    source={{uri:profileImage}}
-                    style={{width: 150, height: 150, borderRadius:60,
-                    }}
-                />
+                <View style={{paddingLeft:'5%',position:'relative', flexDirection:'row', alignItems:'center', backgroundColor:'black'}}>
+                    <View style={{ position:'relative',alignItems: 'center',}}>
+                        <Text style={{
+                                paddingVertical: '7%', 
+                                fontWeight: 'bold',
+                                fontSize: 25,
+                                color: '#dddddd',
+                            }}>
+                            {name}
+                        </Text>
+                        <Image
+                            source={require('../../images/place/image2.jpeg')}
+                            style={{width: 130, height: 130, borderRadius:90,
+                            }}
+                        />
 
-                <Text style={{
-                    paddingVertical: 20, 
-                    fontWeight: 'bold',
-                    fontSize: 20,
-                    color: '#224455',
-                    paddingBottom:10
-                }}>
-                    {name}
-                </Text>
-            </View>
+                    </View>
+                </View>
+                <View style={{paddingLeft:'1%',width:'40%',paddingTop:'25%',position:'relative',flexDirection:'row', alignItems:'center', backgroundColor:'black',}}>
+                    <View style={{posistion:'relative', flexDirection:'column', backgroundColor:'black', alignItems:'center', marginRight:'25%'}}>
+                        <TouchableOpacity>
+                            <Text style={{marginLeft:'26%',color:'white', fontWeight:'bold', fontSize:15}}>
+                                61
+                            </Text>
+                            <Text style={{color:'white', fontWeight:'bold', fontSize:16}}>
+                                팔로워
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{position:'relative', flexDirection:'column',}}>
+                        <TouchableOpacity>
+                            <Text style={{marginLeft:'24%',color:'white', fontWeight:'bold',fontSize:15}}>
+                                83
+                            </Text>
+                            <Text style={{color:'white', fontWeight:'bold',fontSize:16}}>
+                                팔로잉
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
             </View>
         </View>
   )

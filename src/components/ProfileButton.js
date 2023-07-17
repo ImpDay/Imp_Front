@@ -14,23 +14,9 @@ const ProfileButton = ({name, profileImage}) => {
         }}
         style={{width: '100%',}}>
             <View
-                style={{width: '100%', height: 40, borderColor: '#DEDEDE', borderWidth: 1, borderRadius: 5, justifyContent:'center', alignItems:'center'}}>
-                <Text style ={{fontWeight: 'bold',fontSize: 14, letterSpacing:1, opacity:0.8,}}>
-                    프로필 수정
-                </Text>
-            </View>
-        </TouchableOpacity>
-        </View>
-
-        <View style={{paddingVertical: 1, paddingHorizontal:10, paddingBottom:6}}>
-            <TouchableOpacity onPress={()=>{navigation.push('Places')
-        }}
-        style={{width: '100%',}}>
-            <View
-                style={{width: '100%', height: 40, borderColor: '#DEDEDE', borderWidth: 1, borderRadius: 5, justifyContent:'center', alignItems:'center', flexDirection:'row'}}>
-                <AntDesign name="pluscircleo" style={{ fontSize: 15, paddingTop:5, paddingHorizontal:5 }} />   
-                <Text style ={{fontWeight: 'bold',fontSize: 14, letterSpacing:1, opacity:0.8,}}>
-                    새로운 여행!
+                style={{width: '100%', height: 40, borderColor: 'white', borderWidth: 1, borderRadius: 5, justifyContent:'center', alignItems:'center'}}>
+                <Text style ={{fontWeight: 'bold',fontSize: 14, letterSpacing:1, opacity:0.8,color:'white'}}>
+                    프로필 편집
                 </Text>
             </View>
         </TouchableOpacity>

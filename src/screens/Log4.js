@@ -3,8 +3,9 @@ import {View, Text, SafeAreaView, TouchableOpacity, Button } from 'react-native'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import  * as KakaoLogin from '@react-native-seoul/kakao-login';
 import { useNavigation } from '@react-navigation/native';
+import "./ignore";
 
-const log4 = () => {
+const Log4 = () => {
     const navigation =useNavigation();
     KakaoLogin.login().then((result) => {
         console.log("Login Success", JSON.stringify(result));
@@ -19,4 +20,4 @@ const log4 = () => {
 };
   
 
-export default log4;
+export default Log4;
