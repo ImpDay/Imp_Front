@@ -7,7 +7,7 @@ import Log2 from './Log2';
 import Log3 from './Log3';
 import Log4 from './Log4';
 import Log5 from './Log5';
-import MyTab from './MyTab';
+import Home from './Home';
 import Profile from './Profile';
 
 import Detail from '../components/Detail';
@@ -25,6 +25,7 @@ import TravelList from '../components/TravelList';
 import SearchInput from '../components/SearchInput';
 
 
+
 const Stack = createNativeStackNavigator();
 
 const Navigation = () =>{
@@ -34,7 +35,7 @@ const Navigation = () =>{
           <Stack.Screen name="Log2" component={Log2} />
           <Stack.Screen name ="Log3" component={Log3}/>
           <Stack.Screen name ="Log4" component={Log4}/>
-          <Stack.Screen name ="MyTab" component={MyTab}/>
+          <Stack.Screen name ="Home" component={Home}/>
           <Stack.Screen name = "Profile" component={Profile}/>
           <Stack.Screen name = "SearchInput" component={SearchInput}/>
           <Stack.Screen name ="Adding" component={Adding}/>

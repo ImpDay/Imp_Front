@@ -3902,7 +3902,7 @@
   "resolved" "https://registry.npmjs.org/depd/-/depd-2.0.0.tgz"
   "version" "2.0.0"
 
-"deprecated-react-native-prop-types@4.1.0":
+"deprecated-react-native-prop-types@^4.1.0", "deprecated-react-native-prop-types@4.1.0":
   "integrity" "sha512-WfepZHmRbbdTvhcolb8aOKEvQdcmTMn5tKLbqbXmkBvjFjRVWAYqsXk/DBsV8TZxws8SdGHLuHaJrHSQUPRdfw=="
   "resolved" "https://registry.npmjs.org/deprecated-react-native-prop-types/-/deprecated-react-native-prop-types-4.1.0.tgz"
   "version" "4.1.0"
@@ -6825,6 +6825,11 @@
   "integrity" "sha512-pf9OnL/Tkr+5s4Gjmsn7xh91PtJLDa6qxYa/bmtUhd/+s4cQdWQ8DIFoOFghwZIHHHwVdWtoXkp6HtpjN+r20g=="
   "resolved" "https://registry.npmjs.org/react-native-pager-view/-/react-native-pager-view-6.2.0.tgz"
   "version" "6.2.0"
+
+"react-native-progress-circle@^2.1.0":
+  "integrity" "sha512-VP0s92bgbTMQy4hQzPU4LlGyFj3z5u7i1HYFG8/yzXXfGkX1cxKS4xOlE+OTaObWC99w7Bodi3h8R7En2nQPYw=="
+  "resolved" "https://registry.npmjs.org/react-native-progress-circle/-/react-native-progress-circle-2.1.0.tgz"
+  "version" "2.1.0"
 
 "react-native-push-notification@^8.1.1":
   "integrity" "sha512-XpBtG/w+a6WXTxu6l1dNYyTiHnbgnvjoc3KxPTxYkaIABRmvuJZkFxqruyGvfCw7ELAlZEAJO+dthdTabCe1XA=="
