@@ -103,7 +103,7 @@ const Home = ({navigation}) => {
     );
   };
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{width:'100%', height:'100%'}}>
       <StatusBar
         backgroundColor="black"
         barStyle="light-content"
