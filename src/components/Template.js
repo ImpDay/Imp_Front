@@ -12,7 +12,7 @@ const Template = ({ data }) => {
   const navigation = useNavigation();
   return (
     <View style={{position:'relative', padding:'0.5%', width:170}}>
-    <TouchableOpacity>
+    <TouchableOpacity onPress={()=>navigation.push()}>
     <View style={{position:'relative', borderColor:'#88ff88', borderWidth:3, height:'100%', borderRadius:10, alignItems:'center'}}>
         <View style={{position:'relative',paddingTop:'15%', padding:'3%', height:'30%',alignItems:'center'}}>
             <Text style={{color:'white', fontSize:16, color:'white', fontWeight:'bold'}}>
