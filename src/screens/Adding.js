@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import Entypo from 'react-native-vector-icons/Entypo'
 import './ignore'
+import Question from '../components/Question'
 
 
 const Adding = ({navigation}) => {
@@ -22,7 +23,7 @@ const Adding = ({navigation}) => {
             <Text style={{color:'#dddddd', fontSize:17, fontWeight:'bold'}}>
               Template 생성
             </Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>{navigation.push('AddingQuestion')}}>
                 <Entypo name="add-to-list" style={{color:'#dddddd', fontSize:27, paddingTop:'2%'}}/>
             </TouchableOpacity>
         </View>
@@ -72,9 +73,9 @@ const Adding = ({navigation}) => {
                   Question List
               </Text>
           </View>
-          <View style={{backgroundColor:'orange', width:'100%', height:'100%'}}>
+          <View style={{backgroundColor:'black', width:'100%', height:'100%',}}>
                   <ScrollView>
-                    
+                    <Question/>
                   </ScrollView>
           </View>
         </View>
@@ -83,7 +84,7 @@ const Adding = ({navigation}) => {
               <TouchableOpacity>
                 <View style={{backgroundColor:'black', width:'32%', height:'100%', marginLeft:'34%', borderColor:'#dddddd', borderWidth:1, borderRadius:10, alignItems:'center', justifyContent:'center'}}>
                     <Text style={{color:'#dddddd', fontWeight:'bold', fontSize:15}}>
-                      Select
+                      Save
                     </Text>
                 </View>
               </TouchableOpacity>

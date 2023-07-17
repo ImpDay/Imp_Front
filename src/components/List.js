@@ -54,6 +54,10 @@ const List = () => {
     {friendName:'Minjae', 
     friendImage: require('../../images/place/image3.jpeg'),
     weekscore:[96,66,55,91,45,38,54]
+    },
+    {friendName:'OhHyeon', 
+    friendImage: require('../../images/place/images9.jpeg'),
+    weekscore:[46,26,15,26,32,12,10]
     },]
     return(
         <View style={{position:'relative',}}>
