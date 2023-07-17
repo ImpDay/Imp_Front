@@ -2,6 +2,7 @@ import {View, Text, Image, TextInput, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import axios from 'axios';
 import './ignore';
 
 const styles = StyleSheet.create({
@@ -76,39 +77,26 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
 
   const onSignIn = async () => {
-    navigation.push('Home');
-    /*
-      if (userId == '' || password == '') {
-        Alert.alert('경고', '다시 입력해주세요');
-      } else {
-        try {
-          Axios.post('http://172.10.5.152:80/login', {
-            iduser: userId,
-            password: password,
-          },
-            {
-              headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-              }
-            }).then(response => {
-              console.log(response.status);
-              if (response.status === 200) {
-                // 로그인 성공 처리
-                navigation.push('MyTab');
-              } else if (response.status === 401) {
-                // 비밀번호, 사용자 없음 불일치 처리
-                Alert.alert('경고', '로그인 정보를 다시 확인하세요');
-              } else if (response.status === 500) {
-                // 서버 오류 처리
-                Alert.alert('서버 오류', '서버에 문제가 발생했습니다');
-              }
-            })
-            .catch(error => console.log(error));
-        } catch (error) {
-          console.error(error);
-        }
-      }
-      */
+    if (userId == '' || password == '') {
+      console.log('좀 쓰고 누르셈');
+    } else {
+      var url =
+        'http://172.10.5.148:443/login?loginId=' +
+        userId +
+        '&password=' +
+        password;
+      console.log('This is url : ' + url);
+      axios
+        .get(url)
+        .then(response => {
+          console.log(response.data);
+          navigation.push('Home');
+        })
+        .catch(error => {
+          // console.error(error);
+          console.log('너 잘못 썻어');
+        });
+    }
   };
 
   return (
