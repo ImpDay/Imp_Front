@@ -4,7 +4,7 @@
             "outputFile": "com.flowcamp2.app-mergeDebugResources-35:/values-ldltr-v21/values-ldltr-v21.xml",
             "map": [
                 {
-                    "source": "/Users/eomchang-yong/.gradle/caches/transforms-3/69332e46376ae4404619068bb0b670d2/transformed/appcompat-1.4.1/res/values-ldltr-v21/values-ldltr-v21.xml",
+                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-3\\69332e46376ae4404619068bb0b670d2\\transformed\\appcompat-1.4.1\\res\\values-ldltr-v21\\values-ldltr-v21.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
