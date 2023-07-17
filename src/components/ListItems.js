@@ -1,7 +1,44 @@
 import {useNavigation} from '@react-navigation/native';
 import '../screens/ignore';
 import React from 'react';
-import {View, Text, TouchableOpacity, Image} from 'react-native';
+import {View, Text, TouchableOpacity, Image, StyleSheet} from 'react-native';
+
+const styles = StyleSheet.create({
+  listItemContainer: {
+    width: '94%',
+    marginLeft: '3%',
+    marginRight: '3%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+    flexDirection: 'row',
+    marginBottom: '5%',
+    height: 60,
+    backgroundColor: '#444444',
+    borderRadius: 20,
+  },
+  profileImgContainer: {
+    position: 'relative',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: '#cccccc',
+    marginLeft: '3%',
+    borderWidth: 1.5,
+    borderRadius: 18,
+    width: 46,
+    height: 46,
+  },
+  firstLine: {
+    paddingLeft: '5%',
+    paddingRight: '1%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  weekendLine: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+});
 
 const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
 const today = new Date();
@@ -22,61 +59,26 @@ const ListItems = ({data}) => {
   const level5 = '#003300'; //81~100
   let array = data.weekscore;
   return (
-    <View
-      style={{
-        marginLeft: '3%',
-        marginRight: '3%',
-        justifyContent: 'center',
-        position: 'relative',
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: '5%',
-        height: 60,
-        backgroundColor: '#444444',
-        borderRadius: 20,
-      }}>
-      <View
-        style={{
-          position: 'relative',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}>
-        <View
-          style={{
-            position: 'relative',
-            alignItems: 'center',
-            borderColor: '#cccccc',
-            borderWidth: 1.5,
-            borderRadius: 18,
-            width: 46,
-            height: 46,
-            justifyContent: 'center',
-          }}>
-          <Image
-            source={data.friendImage}
-            style={{width: 40, height: 40, borderRadius: 15}}
-          />
-        </View>
+    <View style={styles.listItemContainer}>
+      <View style={styles.profileImgContainer}>
+        <Image
+          source={data.friendImage}
+          style={{width: 40, height: 40, borderRadius: 15}}
+        />
       </View>
-      <View style={{flexDirection: 'column'}}>
-        <View
-          style={{
-            paddingLeft: '5%',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}>
+      <View style={{flexDirection: 'column', alignItems: 'start'}}>
+        <View style={styles.firstLine}>
           <Text style={{color: 'white'}}>{data.friendName}</Text>
           <Text
             style={{
               color: '#ccdd11',
               fontWeight: 'bold',
-              paddingRight: '1.5%',
+              paddingRight: '5%',
             }}>
             Today
           </Text>
         </View>
-        <View style={{flexDirection: 'row', paddingLeft: '5%'}}>
+        <View style={styles.weekendLine}>
           {weekDays.map((data, index) => {
             if (array[index] < 21) {
               level = level1;
@@ -96,7 +98,7 @@ const ListItems = ({data}) => {
                     marginTop: '1%',
                     backgroundColor: level,
                     borderRadius: 5,
-                    width: 40,
+                    width: '12.5%',
                     alignItems: 'center',
                   }}>
                   <Text style={{color: 'white'}}>{data}</Text>
@@ -109,7 +111,7 @@ const ListItems = ({data}) => {
                     marginTop: '1%',
                     backgroundColor: level,
                     borderRadius: 5,
-                    width: 40,
+                    width: '12.5%',
                     alignItems: 'center',
                   }}>
                   <Text style={{color: 'white'}}>{data}</Text>

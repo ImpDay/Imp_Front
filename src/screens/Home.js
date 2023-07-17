@@ -185,14 +185,8 @@ const Home = ({navigation}) => {
 
   const renderFriendTabContent = () => {
     return (
-      <View
-        style={{
-          position: 'relative',
-          backgroundColor: 'black',
-          width: '100%',
-          height: '100%',
-        }}>
-        <ScrollView>
+      <View style={styles.contentsContainer}>
+        <ScrollView style={{marginBottom: '26%'}}>
           <List />
         </ScrollView>
       </View>
