@@ -13,6 +13,7 @@ import PostItems from '../components/PostItems';
 import Adding from './Adding';
 import EditProfile from './EditProfile';
 import ListItems from '../components/ListItems';
+import AddingQuestion from '../components/AddingQuestion';
 
 
 
@@ -27,6 +28,7 @@ const Navigation = () =>{
           <Stack.Screen name ="Home" component={Home}/>
           <Stack.Screen name = "Profile" component={Profile}/>
           <Stack.Screen name ="Adding" component={Adding}/>
+          <Stack.Screen name ="AddingQuestion" component={AddingQuestion}/>
           <Stack.Screen name ="PostItems" component={PostItems}/>
           <Stack.Screen name ="EditProfile" component={EditProfile}/>
           <Stack.Screen name="ListItems" component={ListItems}/>
