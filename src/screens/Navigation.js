@@ -12,6 +12,7 @@ import PostItems from '../components/PostItems';
 import Adding from './Adding';
 import EditProfile from './EditProfile';
 import ListItems from '../components/ListItems';
+import AddingQuestion from '../components/AddingQuestion';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,12 +20,13 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="LoginPage" component={LoginPage} />
+        <Stack.Screen name="LoginPage" component={Log5} />
         <Stack.Screen name="Log3" component={Log3} />
         <Stack.Screen name="Log4" component={Log4} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="Adding" component={Adding} />
+        <Stack.Screen name="AddingQuestion" component={AddingQuestion} />
         <Stack.Screen name="PostItems" component={PostItems} />
         <Stack.Screen name="EditProfile" component={EditProfile} />
         <Stack.Screen name="ListItems" component={ListItems} />
