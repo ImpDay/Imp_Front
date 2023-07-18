@@ -2,16 +2,15 @@ import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 
-const RecordItem = ({data}) => {
+const RecordItem = ({data, templateData}) => {
   const navigation = useNavigation();
-  console.log(`This is createdTime of record Item : ${data.createdTime}`);
   const date = new Date(data.createdTime);
   const formattedDate = date.toISOString().slice(0, 10);
   console.log(formattedDate);
   return (
     <TouchableOpacity
       onPress={() => {
-        navigation.push('Detail');
+        navigation.push('Detail', {data, templateData});
       }}>
       <View
         style={{

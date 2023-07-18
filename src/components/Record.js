@@ -4,9 +4,10 @@ import axios from 'axios';
 import RecordItem from './RecordItem';
 
 class RecordData {
-  constructor(templateId, createdTime) {
+  constructor(templateId, createdTime, recordId) {
     this.templateId = templateId;
     this.createdTime = createdTime;
+    this.recordId = recordId;
   }
 }
 
@@ -22,10 +23,11 @@ const Record = ({templateData}) => {
       const response = await axios.get(url);
       const parsedArray = response.data;
       parsedArray.forEach(element => {
-        const date = new Date(element.createdTime);
-        const formattedDate = date.toISOString().slice(0, 10);
-        console.log(formattedDate);
-        const record = new RecordData(element.templateId, formattedDate);
+        const record = new RecordData(
+          element.templateId,
+          element.createdTime,
+          element.recordId,
+        );
         recordList.push(record);
       });
 
@@ -42,7 +44,9 @@ const Record = ({templateData}) => {
   return (
     <View style={{position: 'relative', alignItems: 'center'}}>
       {recordList.map((data, index) => {
-        return <RecordItem key={index} data={data} />;
+        return (
+          <RecordItem key={index} data={data} templateData={templateData} />
+        );
       })}
     </View>
   );

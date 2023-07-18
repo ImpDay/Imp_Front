@@ -13,67 +13,15 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import Ionic from 'react-native-vector-icons/Ionicons';
 import Posts from '../components/Posts';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import {Calendar} from 'react-native-calendars';
+import Calendar from '../components/Calendar';
 import {CalendarList} from 'react-native-calendars';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import './ignore';
 import List from '../components/List';
 import {useNavigation} from '@react-navigation/native';
 
-const totalInfo = [
-  '2023-07-01',
-  '2023-07-02',
-  '2023-07-03',
-  '2023-07-04',
-  '2023-07-05',
-  '2023-07-06',
-  '2023-07-07',
-  '2023-07-08',
-  '2023-07-09',
-  '2023-07-10',
-  '2023-07-11',
-  '2023-07-12',
-  '2023-07-13',
-  '2023-07-14',
-  '2023-07-15',
-  '2023-07-16',
-];
-const scoreInfo = [
-  86, 56, 23, 45, 65, 90, 64, 55, 25, 79, 33, 15, 49, 76, 14, 24,
-];
-const dayScores = [];
-let level = '';
-const level1 = '#aaaaaa'; //0~20
-const level2 = '#99bb99'; //21~40
-const level3 = '#669966'; //41~60
-const level4 = '#336633'; //61~80
-const level5 = '#003300'; //81~100
-
-const marked = {};
-let i = 0;
-// totalInfo.forEach(day => {
-//   if (scoreInfo[i] < 21) {
-//     level = level1;
-//   } else if (21 <= scoreInfo[i] && scoreInfo[i] < 41) {
-//     level = level2;
-//   } else if (41 <= scoreInfo[i] && scoreInfo[i] < 61) {
-//     level = level3;
-//   } else if (61 <= scoreInfo[i] && scoreInfo[i] < 81) {
-//     level = level4;
-//   } else {
-//     level = level5;
-//   }
-//   i++;
-//   marked[day] = {
-//     selected: true,
-//     selectedColor: level,
-//     selectedTextColor: 'white',
-//   };
-// });
-
 const Home = ({navigation, userId}) => {
   const [activeTab, setActiveTab] = useState('me');
-  const [recordedDays, setrecordedDays] = useState();
   const handleMeTabPress = () => {
     setActiveTab('me');
   };
@@ -146,56 +94,6 @@ const Home = ({navigation, userId}) => {
   });
 
   const renderMeTabContent = () => {
-    const fetchData = async () => {
-      const url = 'http://172.10.5.148:443/recordedDates';
-      try {
-        const response = await axios.get(url);
-        const parsedArray = response.data;
-        console.log(parsedArray);
-        parsedArray.map(async element => {
-          console.log('This is element : ' + element);
-          dayScore = await axios
-            .get(`http://172.10.5.148:443/getScore?date=${element}`)
-            .then(response => {
-              return response.data;
-            })
-            .catch(error => {
-              // 요청 실패 또는 오류 발생 시 처리할 로직
-              return 0;
-            });
-          console.log('This is dayScore : ' + dayScore);
-          dayScores.push(dayScore);
-          let level;
-          if (dayScore < 21) {
-            level = level1;
-          } else if (21 <= dayScore && dayScore < 41) {
-            level = level2;
-          } else if (41 <= dayScore && dayScore < 61) {
-            level = level3;
-          } else if (61 <= dayScore && dayScore < 81) {
-            level = level4;
-          } else {
-            console.log('여기로 오네?');
-            console.log(i);
-            level = level5;
-          }
-          marked[element] = {
-            selected: true,
-            selectedColor: level,
-            selectedTextColor: 'white',
-          };
-        });
-
-        setrecordedDays(parsedArray);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    useEffect(() => {
-      fetchData();
-    }, []);
-
     return (
       <View style={styles.contentsContainer}>
         <View style={styles.templateContainer}>
@@ -220,18 +118,7 @@ const Home = ({navigation, userId}) => {
               backgroundColor: 'black',
             }}>
             <SafeAreaView style={styles.container}>
-              <CalendarList
-                theme={{
-                  calendarBackground: 'black',
-                  dayTextColor: 'white',
-                  monthTextColor: '#88bb88',
-                  todayTextColor: 'white',
-                }}
-                markedDates={marked}
-                onDayPress={() => {
-                  navigation.push();
-                }}
-              />
+              <Calendar />
             </SafeAreaView>
           </View>
         </View>
@@ -254,7 +141,10 @@ const Home = ({navigation, userId}) => {
       <StatusBar backgroundColor="black" barStyle="light-content" />
       <View style={styles.actionBar}>
         <View>
-          <TouchableOpacity onPress={()=>{navigation.push("Search")}}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.push('Search');
+            }}>
             <FontAwesome5
               name="user-plus"
               style={{fontSize: 17, color: 'white'}}
