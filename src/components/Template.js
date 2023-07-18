@@ -33,31 +33,10 @@ const Template = ({data}) => {
                         {data.templatescore}
                     </Text>
                 </ProgressCircle>
-
-          <View
-            style={{
-              justifyContent: 'center',
-              height: 60,
-              alignItems: 'center',
-              flexDirection: 'column',
-              flex: 1,
-            }}>
-            <ProgressCircle
-              percent={data.templatescore}
-              radius={50}
-              borderWidth={7}
-              color="white"
-              shadowColor="#555555"
-              bgColor="black">
-              <Text
-                style={{fontSize: 30, fontWeight: 'bold', color: '#99bb99'}}>
-                {data.templatescore}
-              </Text>
-            </ProgressCircle>
-          </View>
           <View style={{paddingTop: '18%', paddingBottom: '15%'}}>
             <Text style={{color: '#99ffcc', fontWeight: 'bold'}}>Today</Text>
           </View>
+        </View>
         </View>
       </TouchableOpacity>
     </View>

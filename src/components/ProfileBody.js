@@ -36,7 +36,7 @@ const ProfileBody = ({
                 </View>
                 <View style={{paddingLeft:'1%',width:'40%',paddingTop:'25%',position:'relative',flexDirection:'row', alignItems:'center', backgroundColor:'black',}}>
                     <View style={{posistion:'relative', flexDirection:'column', backgroundColor:'black', alignItems:'center', marginRight:'25%'}}>
-                        <TouchableOpacity onPress={()=>{navigation.push("Follower")}}>
+                        <TouchableOpacity onPress={()=>{navigation.push("Follower", name)}}>
                             <Text style={{marginLeft:'26%',color:'white', fontWeight:'bold', fontSize:15}}>
                                 61
                             </Text>

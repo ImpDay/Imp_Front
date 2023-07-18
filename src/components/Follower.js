@@ -2,7 +2,7 @@ import React from "react";
 import { View,Text, SafeAreaView, TouchableOpacity } from "react-native";
 import AntDesign from 'react-native-vector-icons/AntDesign'
 
-const Follower=({navigation})=>{
+const Follower=({navigation, name})=>{
  return(
     <SafeAreaView
             style={{position:'relative',width:'100%', backgroundColor: 'black', height:'100%'}}>
@@ -15,6 +15,7 @@ const Follower=({navigation})=>{
                     <AntDesign name="arrowleft" style={{ color:'#dddddd', fontSize: 25, paddingTop:'1%', }} /> 
                 </TouchableOpacity>
             </View>
+            
     </SafeAreaView>
  )
 }
