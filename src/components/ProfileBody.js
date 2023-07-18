@@ -1,5 +1,6 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 
 
@@ -7,7 +8,7 @@ const ProfileBody = ({
     name,
     profileImage
 }) => {
-
+    const navigation=useNavigation();
   return (
         <View>
             <View style={{position:'relative',flexDirection: 'row',
@@ -35,7 +36,7 @@ const ProfileBody = ({
                 </View>
                 <View style={{paddingLeft:'1%',width:'40%',paddingTop:'25%',position:'relative',flexDirection:'row', alignItems:'center', backgroundColor:'black',}}>
                     <View style={{posistion:'relative', flexDirection:'column', backgroundColor:'black', alignItems:'center', marginRight:'25%'}}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={()=>{navigation.push("Follower")}}>
                             <Text style={{marginLeft:'26%',color:'white', fontWeight:'bold', fontSize:15}}>
                                 61
                             </Text>
@@ -45,7 +46,7 @@ const ProfileBody = ({
                         </TouchableOpacity>
                     </View>
                     <View style={{position:'relative', flexDirection:'column',}}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={()=>{navigation.push("Following")}}>
                             <Text style={{marginLeft:'24%',color:'white', fontWeight:'bold',fontSize:15}}>
                                 83
                             </Text>

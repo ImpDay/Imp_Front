@@ -84,7 +84,8 @@ const Home = ({navigation}) => {
                   monthTextColor: '#88bb88',
                   todayTextColor:'white',
               }}
-              markedDates={marked}/>
+              markedDates={marked}
+              onDayPress={()=>{navigation.push()}}/>
             </SafeAreaView>
           </View>
         </View>

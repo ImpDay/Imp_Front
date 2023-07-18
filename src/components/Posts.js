@@ -1,12 +1,15 @@
-import {View } from 'react-native'
+import {TouchableOpacity, View } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import Axios from 'axios'
 import Template  from './Template'
 import NewTemplate from './NewTemplate'
 import "../screens/ignore";
+import { useNavigation } from '@react-navigation/native'
 
 
-const Posts = ({navigation})=>{
+
+const Posts = ({})=>{
+    const navigation =useNavigation();
     const todayInfo=[{ 
         title:'오늘 당신의 하루는?',
         leftDay: 0,
@@ -16,7 +19,6 @@ const Posts = ({navigation})=>{
         title:'가장 맛있었던 음식?',
         leftDay: 0,
         templatescore: 60
-
     },
       { 
         title:'부모님의 하루는?',
@@ -71,8 +73,8 @@ const Posts = ({navigation})=>{
         fetchPosts();
       }, []);
       */
-        
     return (
+      
         <View style={{position:'relative',flexDirection:'row',alignItems:'center',}}>
             {todayInfo.map((data, index)=> {
               if(data.leftDay===0){
@@ -86,6 +88,7 @@ const Posts = ({navigation})=>{
               }
             })}
         </View>
+        
     );
 } 
 export default Posts;
