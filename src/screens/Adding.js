@@ -130,7 +130,7 @@ const Adding = ({navigation}) => {
         </View>
         <View style={{backgroundColor:'black', width:'100%', height:'10%'}}>
           <View style={{backgroundColor:'black', width:'100%', height:'50%', marginTop:'3%'}}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=>{navigation.push("Home")}}>
                 <View style={{backgroundColor:'black', width:'32%', height:'100%', marginLeft:'34%', borderColor:'#dddddd', borderWidth:1, borderRadius:10, alignItems:'center', justifyContent:'center'}}>
                     <Text style={{color:'#dddddd', fontWeight:'bold', fontSize:15}}>
                       Save
