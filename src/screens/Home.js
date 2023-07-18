@@ -73,7 +73,7 @@ let i = 0;
 
 const Home = ({navigation, userId}) => {
   const [activeTab, setActiveTab] = useState('me');
-  const [recordedDays, setrecordedDays] = useState();
+  const [recordedDays, setrecordedDays] = useState([]);
   const handleMeTabPress = () => {
     setActiveTab('me');
   };
@@ -243,7 +243,7 @@ const Home = ({navigation, userId}) => {
     return (
       <View style={styles.contentsContainer}>
         <ScrollView style={{marginBottom: '26%'}}>
-          <List />
+          <List/>
         </ScrollView>
       </View>
     );
