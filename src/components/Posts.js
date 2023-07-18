@@ -15,88 +15,46 @@ class TemplateData {
     this.templateName = templateName;
     this.lastRecordedTime = lastRecordedTime;
     this.writePeriod = writePeriod;
-  }
-  setLeftDay() {
-    this.leftDay = 1;
-  }
-  getLeftDay() {
-    return this.leftDay;
+    this.leftDay = 0;
+    this.templatescore = 78;
   }
 }
 
 const Posts = ({}) => {
   const navigation = useNavigation();
-  console.log('postpost');
-  // const templateList =
-  const todayInfo = [
-    {
-      title: '오늘 당신의 하루는?',
-      leftDay: 0,
-      templatescore: 79,
-    },
-    {
-      title: '가장 맛있었던 음식?',
-      leftDay: 0,
-      templatescore: 60,
-    },
-    {
-      title: '부모님의 하루는?',
-      leftDay: 0,
-      templatescore: 48,
-    },
-    {
-      title: '운동 기록',
-      leftDay: 1,
-      templatescore: 93,
-    },
-    {
-      title: '영단어 30개',
-      leftDay: 4,
-      templatescore: 36,
-    },
-    {
-      title: '기념일',
-      leftDay: 185,
-      templatescore: 50,
-    },
-    {
-      title: '아부지 생신',
-      leftDay: 210,
-      templatescore: 60,
-    },
-    {
-      title: '오마니 생신',
-      leftDay: 189,
-      templatescore: 72,
-    },
-    {
-      title: '형 생일',
-      leftDay: 306,
-      templatescore: 49,
-    },
-  ];
-  // var url = 'http://172.10.5.148:443/templates/' + userId;
+  const [templateList, setTemplateList] = useState([]);
 
-  var url = 'http://172.10.5.148:443/templates/' + 1;
-  axios
-    .get(url)
-    .then(response => {
-      console.log(response.data);
-      // // TODO: 요청에 대한 처리 작업 수행
-      const parsedArray = response.data;
-      parsedArray.forEach(element => {
-        const templateItem = new TemplateData(
-          element.templateId,
-          element.templateName,
-          element.lastRecordedTime,
-          element.writePeriod,
-        );
-      });
-    })
-    .catch(error => {
-      console.error(error);
-      // TODO: 에러 처리
-    });
+  useEffect(() => {
+    const fetchData = () => {
+      const url = 'http://172.10.5.148:443/templates/myTemplates';
+      axios
+        .get(url)
+        .then(response => {
+          const parsedArray = response.data;
+          const updatedTemplateList = parsedArray.map(element => {
+            const templateItem = new TemplateData(
+              element.templateId,
+              element.templateName,
+              element.lastRecordedTime,
+              element.writePeriod,
+            );
+            templateItem.leftDay = getLeftDay(
+              templateItem.lastRecordedTime,
+              templateItem.writePeriod,
+            );
+            return templateItem;
+          });
+          setTemplateList(updatedTemplateList);
+        })
+        .catch(error => {
+          console.error(error);
+          // TODO: 에러 처리
+        });
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <View
       style={{
@@ -104,7 +62,7 @@ const Posts = ({}) => {
         flexDirection: 'row',
         alignItems: 'center',
       }}>
-      {todayInfo.map((data, index) => {
+      {templateList.map((data, index) => {
         if (data.leftDay <= 0) {
           return <Template key={index} data={data} />;
         } else {
@@ -114,4 +72,20 @@ const Posts = ({}) => {
     </View>
   );
 };
+
+function getLeftDay(date, writePeriod) {
+  // 오늘 날짜의 밀리초 단위로 설정 (시간을 무시)
+  const today = new Date().setHours(0, 0, 0, 0);
+
+  // 비교할 날짜의 밀리초 단위로 설정 (시간을 무시)
+  const otherDate = new Date(date).setHours(0, 0, 0, 0);
+
+  // 날짜 간의 일 수 차이 계산
+  const timeDiff = Math.abs(today - otherDate);
+  const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+  return writePeriod - daysDiff;
+}
+
+const updateTemplateList = () => {};
 export default Posts;

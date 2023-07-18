@@ -44,7 +44,7 @@ const NewTemplate = ({data}) => {
                 color: 'white',
                 fontWeight: 'bold',
               }}>
-              {data.title}
+              {data.templateName}
             </Text>
           </View>
 
