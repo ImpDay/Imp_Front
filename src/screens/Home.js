@@ -7,7 +7,8 @@ import {
   Image,
   StyleSheet,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Ionic from 'react-native-vector-icons/Ionicons';
 import Posts from '../components/Posts';
@@ -40,6 +41,7 @@ const totalInfo = [
 const scoreInfo = [
   86, 56, 23, 45, 65, 90, 64, 55, 25, 79, 33, 15, 49, 76, 14, 24,
 ];
+const dayScores = [];
 let level = '';
 const level1 = '#aaaaaa'; //0~20
 const level2 = '#99bb99'; //21~40
@@ -49,29 +51,29 @@ const level5 = '#003300'; //81~100
 
 const marked = {};
 let i = 0;
-totalInfo.forEach(day => {
-  if (scoreInfo[i] < 21) {
-    level = level1;
-  } else if (21 <= scoreInfo[i] && scoreInfo[i] < 41) {
-    level = level2;
-  } else if (41 <= scoreInfo[i] && scoreInfo[i] < 61) {
-    level = level3;
-  } else if (61 <= scoreInfo[i] && scoreInfo[i] < 81) {
-    level = level4;
-  } else {
-    level = level5;
-  }
-  i++;
-  marked[day] = {
-    selected: true,
-    selectedColor: level,
-    selectedTextColor: 'white',
-  };
-});
+// totalInfo.forEach(day => {
+//   if (scoreInfo[i] < 21) {
+//     level = level1;
+//   } else if (21 <= scoreInfo[i] && scoreInfo[i] < 41) {
+//     level = level2;
+//   } else if (41 <= scoreInfo[i] && scoreInfo[i] < 61) {
+//     level = level3;
+//   } else if (61 <= scoreInfo[i] && scoreInfo[i] < 81) {
+//     level = level4;
+//   } else {
+//     level = level5;
+//   }
+//   i++;
+//   marked[day] = {
+//     selected: true,
+//     selectedColor: level,
+//     selectedTextColor: 'white',
+//   };
+// });
 
 const Home = ({navigation, userId}) => {
-  console.log('This is userId : ' + userId);
   const [activeTab, setActiveTab] = useState('me');
+  const [recordedDays, setrecordedDays] = useState();
   const handleMeTabPress = () => {
     setActiveTab('me');
   };
@@ -144,7 +146,56 @@ const Home = ({navigation, userId}) => {
   });
 
   const renderMeTabContent = () => {
-    console.log('rendermepage');
+    const fetchData = async () => {
+      const url = 'http://172.10.5.148:443/recordedDates';
+      try {
+        const response = await axios.get(url);
+        const parsedArray = response.data;
+        console.log(parsedArray);
+        parsedArray.map(async element => {
+          console.log('This is element : ' + element);
+          dayScore = await axios
+            .get(`http://172.10.5.148:443/getScore?date=${element}`)
+            .then(response => {
+              return response.data;
+            })
+            .catch(error => {
+              // 요청 실패 또는 오류 발생 시 처리할 로직
+              return 0;
+            });
+          console.log('This is dayScore : ' + dayScore);
+          dayScores.push(dayScore);
+          let level;
+          if (dayScore < 21) {
+            level = level1;
+          } else if (21 <= dayScore && dayScore < 41) {
+            level = level2;
+          } else if (41 <= dayScore && dayScore < 61) {
+            level = level3;
+          } else if (61 <= dayScore && dayScore < 81) {
+            level = level4;
+          } else {
+            console.log('여기로 오네?');
+            console.log(i);
+            level = level5;
+          }
+          marked[element] = {
+            selected: true,
+            selectedColor: level,
+            selectedTextColor: 'white',
+          };
+        });
+
+        setrecordedDays(parsedArray);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    useEffect(() => {
+      fetchData();
+    }, []);
+
     return (
       <View style={styles.contentsContainer}>
         <View style={styles.templateContainer}>
@@ -197,6 +248,7 @@ const Home = ({navigation, userId}) => {
       </View>
     );
   };
+
   return (
     <SafeAreaView style={styles.outerContainer}>
       <StatusBar backgroundColor="black" barStyle="light-content" />

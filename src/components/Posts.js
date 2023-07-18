@@ -48,14 +48,12 @@ const Posts = ({}) => {
               `http://172.10.5.148:443/templates/${templateItem.templateId}/averageScore`,
             )
             .then(response => {
-              console.log('This is response data : ' + response.data);
               return response.data;
             })
             .catch(error => {
               // 요청 실패 또는 오류 발생 시 처리할 로직
               return 0;
             });
-          console.log('this is template score : ' + templateScore);
           templateItem.templatescore = templateScore;
 
           return templateItem;
