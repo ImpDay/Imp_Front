@@ -1,11 +1,13 @@
-import {View} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import Axios from 'axios';
 import Template from './Template';
 import NewTemplate from './NewTemplate';
 import '../screens/ignore';
+import {useNavigation} from '@react-navigation/native';
 
-const Posts = ({navigation}) => {
+const Posts = ({}) => {
+  const navigation = useNavigation();
   const todayInfo = [
     {
       title: '오늘 당신의 하루는?',

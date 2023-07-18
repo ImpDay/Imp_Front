@@ -175,6 +175,9 @@ const Home = ({navigation}) => {
                   todayTextColor: 'white',
                 }}
                 markedDates={marked}
+                onDayPress={() => {
+                  navigation.push();
+                }}
               />
             </SafeAreaView>
           </View>

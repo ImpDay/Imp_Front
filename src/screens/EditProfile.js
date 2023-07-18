@@ -11,7 +11,7 @@ const EditProfile = ({route, navigation}) => {
   const { name: initialName, profileImage: initialProfileImage } = route.params
   const [name, setName] = useState(initialName)
   const [profileImage, setProfileImage] = useState(initialProfileImage)
-
+  /*
   const handleSave = async () => {
     try {
       const formData = new FormData();
@@ -58,43 +58,45 @@ const EditProfile = ({route, navigation}) => {
       }
     });
   }
-
+*/
   return (
     <SafeAreaView
-      style={{width:'100%', backgroundColor: 'white'}}
+      style={{width:'100%', backgroundColor: 'black'}}
     >
-      <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: 10}}>
+      <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', padding: '3%'}}>
         <TouchableOpacity
           onPress={()=>{
             navigation.goBack();
           }}>
-          <Text>취소</Text>
+          <Text style={{color:'#dddddd'}}>취소</Text>
         </TouchableOpacity>
         <Text style={{fontSize: 16, fontWeight: 'bold'}}>프로필 수정</Text>
-        <TouchableOpacity onPress={ handleSave }>
-          <Text style={{color: '#3493D9'}}>완료</Text>
+        <TouchableOpacity onPress={ {/*handleSave*/} }>
+          <Text style={{color: '#88bb88'}}>완료</Text>
         </TouchableOpacity>
       </View>
+      <View style={{backgroundColor:'black', width:'100%', height:'100%'}}>
       <View style={{padding: 40, alignItems: 'center'}}>
-          <Image source={{uri: profileImage}} style={{width: 120, height: 120, borderRadius: 100}}/>
-          <TouchableOpacity onPress={ showPicker }>
-            <Text style={{color: '#3493D9', marginTop:10}}>
+          <Image source={require('../../images/place/image2.jpeg')} style={{width: 120, height: 120, borderRadius: 100}}/>
+          <TouchableOpacity onPress={ {/*showPicker*/} }>
+            <Text style={{color: '#88bb88', marginTop:'5%'}}>
               프로필 사진 바꾸기
             </Text>
           </TouchableOpacity>
           
       </View>
       <View style={{padding:10}}>
-        <View style={{paddingVertical: 10}}>
-          <Text style={{opacity:0.5, paddingLeft:'1.3%'}}>이름</Text>
+        <View style={{paddingVertical: '3%'}}>
+          <Text style={{color:'#dddddd',opacity:0.9, paddingLeft:'1.3%'}}>이름</Text>
           <TextInput
             placeholder='이름'
+            color='#dddddd'
             defaultValue={name}
             onChangeText={newName => setName(newName)}
             style={{fontSize: 16, borderBottomWidth:1, borderColor: '#CDCDCD'}}
           />
         </View>
-        
+      </View>
       </View>
     </SafeAreaView>
   )
