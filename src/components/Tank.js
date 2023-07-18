@@ -77,7 +77,7 @@ const Tank = ({route}) => {
               </Text>
             </View>
           </TouchableOpacity>
-          <Record />
+          <Record templateData={data} />
         </ScrollView>
       </View>
     </SafeAreaView>
