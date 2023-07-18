@@ -143,6 +143,7 @@ const Home = ({navigation}) => {
   });
 
   const renderMeTabContent = () => {
+    console.log('rendermepage');
     return (
       <View style={styles.contentsContainer}>
         <View style={styles.templateContainer}>

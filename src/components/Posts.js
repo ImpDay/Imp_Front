@@ -3,11 +3,28 @@ import React, {useState, useEffect} from 'react';
 import Axios from 'axios';
 import Template from './Template';
 import NewTemplate from './NewTemplate';
+import axios from 'axios';
 import '../screens/ignore';
 import {useNavigation} from '@react-navigation/native';
 
+const userId = 1;
+
+class TemplateData {
+  constructor(templateId, templateName) {
+    this.templateId = templateId;
+    this.templateName = templateName;
+  }
+  setLeftDay() {
+    this.leftDay = 1;
+  }
+  getLeftDay() {
+    return this.leftDay;
+  }
+}
+
 const Posts = ({}) => {
   const navigation = useNavigation();
+  console.log('postpost');
   const todayInfo = [
     {
       title: '오늘 당신의 하루는?',
@@ -55,22 +72,24 @@ const Posts = ({}) => {
       templatescore: 49,
     },
   ];
-  /*const [postInfo, setPostInfo] = useState([]);
+  // var url = 'http://172.10.5.148:443/templates/' + userId;
 
-    useEffect(() => {
-        const fetchPosts = async () => {
-          try {
-            const response = await Axios.get('http://172.10.5.152:80/travelpost');
-            setPostInfo(response.data);
-          } catch (error) {
-            console.error('Error fetching posts:', error);
-          }
-        };
-      
-        fetchPosts();
-      }, []);
-      */
-
+  var url = 'http://172.10.5.148:443/templates/' + 1;
+  axios
+    .get(url)
+    .then(response => {
+      console.log(response.data);
+      // // TODO: 요청에 대한 처리 작업 수행
+      const parsedArray = response.data;
+      parsedArray.forEach(element => {
+        console.log('This is TemplateId : ' + element.templateId);
+        console.log('This is TemplateName : ' + element.templateId);
+      });
+    })
+    .catch(error => {
+      console.error(error);
+      // TODO: 에러 처리
+    });
   return (
     <View
       style={{
