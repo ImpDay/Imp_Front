@@ -13,19 +13,17 @@ const Adding = ({navigation}) => {
     <SafeAreaView
       style={{position:'relative',width:'100%', backgroundColor: 'black', height:'100%'}}>
         <View style={{position:'relative',flexDirection: 'row', alignItems: 'center',paddingLeft:'2%',paddingRight:'2%',
-            backgroundColor: 'black',alignItems:'center',justifyContent:'space-between'}}>
+            backgroundColor: 'black',alignItems:'center',}}>
             <TouchableOpacity
                 onPress={()=>{
                 navigation.goBack();
             }}>
                 <AntDesign name="arrowleft" style={{ color:'#dddddd', fontSize: 25, paddingTop:'1%', }} /> 
             </TouchableOpacity>
-            <Text style={{color:'#dddddd', fontSize:17, fontWeight:'bold'}}>
+            <Text style={{color:'#dddddd', fontSize:17, fontWeight:'bold', paddingLeft:'30%'}}>
               Template 생성
             </Text>
-            <TouchableOpacity onPress={()=>{navigation.push('AddingQuestion')}}>
-                <Entypo name="add-to-list" style={{color:'#dddddd', fontSize:27, paddingTop:'2%'}}/>
-            </TouchableOpacity>
+    
         </View>
         <View style={{backgroundColor:'black',width:'100%', height:'30%', marginTop:'10%'}}>
           <View style={{backgroundColor:'black', width:'100%', height:'15%', marginTop:'15%', flexDirection:'row'}}>
@@ -34,13 +32,13 @@ const Adding = ({navigation}) => {
                     Title
                 </Text>
             </View>
-            <View style={{backgroundColor:'black', width:'45%', height:'100%', marginLeft:'10%'}}>
-              <TextInput placeholder='please enter title...' placeholderTextColor="#777777"
+            <View style={{backgroundColor:'black', width:'45%', height:'100%', marginLeft:'10%',}}>
+              <TextInput placeholder='Please enter title...' placeholderTextColor="#777777"
                   style={{
                     width: "100%",
                     backgroundColor: '#dddddd',
                     borderRadius: 6,
-                    fontSize: 12,
+                    fontSize: 11,
                     fontWeight:'bold'
                   }}
                   onChangeText={text => setTitle(text)}
@@ -59,7 +57,7 @@ const Adding = ({navigation}) => {
                     width: "100%",
                     backgroundColor: '#dddddd',
                     borderRadius: 6,
-                    fontSize: 12,
+                    fontSize: 11,
                     fontWeight:'bold'
                   }}
                   onChangeText={text => setPeriod(text)}
@@ -73,10 +71,15 @@ const Adding = ({navigation}) => {
                   Question List
               </Text>
           </View>
-          <View style={{backgroundColor:'black', width:'100%', height:'100%',}}>
+          <View style={{backgroundColor:'black', width:'100%', height:'70%',}}>
                   <ScrollView>
                     <Question/>
                   </ScrollView>
+                  <View style={{marginLeft:'10%',backgroundColor:'orange', width:'76%', height:'20%'}}>
+                    <View style={{}}>
+
+                    </View>
+                  </View>
           </View>
         </View>
         <View style={{backgroundColor:'black', width:'100%', height:'10%'}}>

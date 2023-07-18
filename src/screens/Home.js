@@ -202,7 +202,7 @@ const Home = ({navigation, userId}) => {
       <StatusBar backgroundColor="black" barStyle="light-content" />
       <View style={styles.actionBar}>
         <View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>{navigation.push("Search")}}>
             <FontAwesome5
               name="user-plus"
               style={{fontSize: 17, color: 'white'}}

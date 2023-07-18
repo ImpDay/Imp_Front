@@ -18,6 +18,9 @@ import Today from '../components/Today';
 import Detail from '../components/Detail';
 import Follower from '../components/Follower';
 import Following from '../components/Following';
+import Search from './Search';
+import Tank from '../components/Tank';
+import LeftDay from '../components/LeftDay';
 
 const Stack = createNativeStackNavigator();
 const Navigation = () => {
@@ -28,13 +31,16 @@ const Navigation = () => {
         <Stack.Screen name="Log3" component={Log3} />
         <Stack.Screen name="Log4" component={Log4} />
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Search" component={Search}/>
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="Adding" component={Adding} />
         <Stack.Screen name="AddingQuestion" component={AddingQuestion} />
         <Stack.Screen name="EditProfile" component={EditProfile} />
         <Stack.Screen name="ListItems" component={ListItems} />
         <Stack.Screen name="Plus" component={Plus} />
+        <Stack.Screen name="Tank" component={Tank}/>
         <Stack.Screen name="Today" component={Today} />
+        <Stack.Screen name="LeftDay" component={LeftDay} />
         <Stack.Screen name="Detail" component={Detail} />
         <Stack.Screen name="Follower" component={Follower} />
         <Stack.Screen name="Following" component={Following} />

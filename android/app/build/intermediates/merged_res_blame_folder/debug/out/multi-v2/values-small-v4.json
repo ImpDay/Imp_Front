@@ -4,7 +4,7 @@
             "outputFile": "com.flowcamp2.app-mergeDebugResources-35:/values-small-v4/values-small-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-3\\51ab60fff111f0a9500a20a82eacde42\\transformed\\material-1.1.0\\res\\values-small-v4\\values-small-v4.xml",
+                    "source": "/Users/eomchang-yong/.gradle/caches/transforms-3/51ab60fff111f0a9500a20a82eacde42/transformed/material-1.1.0/res/values-small-v4/values-small-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

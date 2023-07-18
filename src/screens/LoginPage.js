@@ -77,6 +77,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
 
   const onSignIn = async () => {
+    
     if (userId == '' || password == '') {
       console.log('좀 쓰고 누르셈');
     } else {
@@ -97,6 +98,7 @@ const LoginPage = () => {
           console.log('너 잘못 썻어');
         });
     }
+    
   };
 
   return (

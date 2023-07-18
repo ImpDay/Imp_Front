@@ -20,7 +20,7 @@ const NewTemplate = ({data}) => {
   console.log(data);
   return (
     <View style={{position: 'relative', padding: '0.5%', width: 160}}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>{navigation.push("Tank", {data})}}>
         <View
           style={{
             position: 'relative',

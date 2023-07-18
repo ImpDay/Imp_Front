@@ -9,7 +9,7 @@ const Log4 = () => {
     const navigation =useNavigation();
     KakaoLogin.login().then((result) => {
         console.log("Login Success", JSON.stringify(result));
-        navigation.push('MyTab');
+        navigation.push('Home');
     }).catch((error) => {
         if (error.code === 'E_CANCELLED_OPERATION') {
             console.log("Login Cancel", error.message);
