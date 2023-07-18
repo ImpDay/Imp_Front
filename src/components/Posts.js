@@ -10,9 +10,11 @@ import {useNavigation} from '@react-navigation/native';
 const userId = 1;
 
 class TemplateData {
-  constructor(templateId, templateName) {
+  constructor(templateId, templateName, lastRecordedTime, writePeriod) {
     this.templateId = templateId;
     this.templateName = templateName;
+    this.lastRecordedTime = lastRecordedTime;
+    this.writePeriod = writePeriod;
   }
   setLeftDay() {
     this.leftDay = 1;
@@ -25,6 +27,7 @@ class TemplateData {
 const Posts = ({}) => {
   const navigation = useNavigation();
   console.log('postpost');
+  // const templateList =
   const todayInfo = [
     {
       title: '오늘 당신의 하루는?',
@@ -82,8 +85,12 @@ const Posts = ({}) => {
       // // TODO: 요청에 대한 처리 작업 수행
       const parsedArray = response.data;
       parsedArray.forEach(element => {
-        console.log('This is TemplateId : ' + element.templateId);
-        console.log('This is TemplateName : ' + element.templateId);
+        const templateItem = new TemplateData(
+          element.templateId,
+          element.templateName,
+          element.lastRecordedTime,
+          element.writePeriod,
+        );
       });
     })
     .catch(error => {

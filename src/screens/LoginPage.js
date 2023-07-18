@@ -80,20 +80,20 @@ const LoginPage = () => {
     if (userId == '' || password == '') {
       console.log('좀 쓰고 누르셈');
     } else {
-      var url =
-        'http://172.10.5.148:443/login?loginId=' +
-        userId +
-        '&password=' +
-        password;
+      const data = {
+        loginId: userId,
+        password: password,
+      };
+      var url = 'http://172.10.5.148:443/login';
       console.log('This is url : ' + url);
       axios
-        .get(url)
+        .post(url, data)
         .then(response => {
           console.log(response.data);
-          navigation.push('Home');
+          const userId = response.data;
+          navigation.push('Home', {userId});
         })
         .catch(error => {
-          // console.error(error);
           console.log('너 잘못 썻어');
         });
     }

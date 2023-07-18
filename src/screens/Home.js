@@ -69,7 +69,8 @@ totalInfo.forEach(day => {
   };
 });
 
-const Home = ({navigation}) => {
+const Home = ({navigation, userId}) => {
+  console.log('This is userId : ' + userId);
   const [activeTab, setActiveTab] = useState('me');
   const handleMeTabPress = () => {
     setActiveTab('me');
