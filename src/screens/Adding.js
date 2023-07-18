@@ -1,14 +1,26 @@
 import { View, Text, Image, TouchableOpacity, TextInput, SafeAreaView, ScrollView } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import Entypo from 'react-native-vector-icons/Entypo'
 import './ignore'
-import Question from '../components/Question'
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 
 const Adding = ({navigation}) => {
   const [title, setTitle] = useState('');
   const [period, setPeriod] = useState();
+  const [question, setQuestion] = useState('');
+  const [myArray, setMyArray] = useState([]);
+  const handleAddItem = () => {
+    if (question !== '') {
+      setMyArray([...myArray, question]);
+      setQuestion('');
+    }
+  };
+  useEffect(() => {
+    console.log('myArray changed:', myArray);
+  }, [myArray]);
+  
   return (
     <SafeAreaView
       style={{position:'relative',width:'100%', backgroundColor: 'black', height:'100%'}}>
@@ -38,7 +50,7 @@ const Adding = ({navigation}) => {
                     width: "100%",
                     backgroundColor: '#dddddd',
                     borderRadius: 6,
-                    fontSize: 11,
+                    fontSize: 12,
                     fontWeight:'bold'
                   }}
                   onChangeText={text => setTitle(text)}
@@ -57,7 +69,7 @@ const Adding = ({navigation}) => {
                     width: "100%",
                     backgroundColor: '#dddddd',
                     borderRadius: 6,
-                    fontSize: 11,
+                    fontSize: 12,
                     fontWeight:'bold'
                   }}
                   onChangeText={text => setPeriod(text)}
@@ -73,11 +85,45 @@ const Adding = ({navigation}) => {
           </View>
           <View style={{backgroundColor:'black', width:'100%', height:'70%',}}>
                   <ScrollView>
-                    <Question/>
+                  <View style={{position:'relative',}}>
+                      {myArray.map((data, index)=> {
+                      return(
+                        <View style={{width:300, height:30, marginLeft:'10%', marginBottom:'3%', backgroundColor:'#999999', borderRadius:5, alignItems:'center', flexDirection:'row', justifyContent:'space-between', paddingLeft:'20%', paddingRight:'10%'}}>
+                            <Text style={{color:'black', fontWeight:'bold', fontSize:15}}>
+                                {data}
+                            </Text>
+                            <TouchableOpacity onPress={() => {
+                                const updatedArray = [...myArray];
+                                updatedArray.splice(index, 1);
+                                setMyArray(updatedArray);
+                              }}>
+                                <FontAwesome name="trash-o" style={{fontSize:22,color:'black'}}/>
+                            </TouchableOpacity>
+                        </View>
+                      )
+                    })}
+                  </View>
                   </ScrollView>
-                  <View style={{marginLeft:'10%',backgroundColor:'orange', width:'76%', height:'20%'}}>
-                    <View style={{}}>
-
+                  <View style={{marginLeft:'10%',backgroundColor:'black', width:'76%', height:'13%', flexDirection:'row'}}>
+                    <View style={{backgroundColor:'black', width:'88%'}}>
+                      <TextInput placeholder='Please write your questions...' placeholderTextColor="#777777"
+                        style={{
+                          width: "100%",
+                          height:33,
+                          backgroundColor: '#dddddd',
+                          borderBottomLeftRadius: 6,
+                          borderTopLeftRadius:6,
+                          fontSize: 12,
+                          fontWeight:'bold',
+                        }}
+                        onChangeText={text => setQuestion(text)}
+                        value={question} />
+                    </View>
+                    <View style={{backgroundColor:'gray',width:'12%',height:33, borderBottomRightRadius:6,borderTopRightRadius:6, alignItems:'center', justifyContent:'center'}}>
+                        <TouchableOpacity onPress={handleAddItem}>
+                          <AntDesign name="plus" style={{color:'#1133ff', fontWeight:'bold',fontSize:17}}/>
+                        </TouchableOpacity>
+                        
                     </View>
                   </View>
           </View>
