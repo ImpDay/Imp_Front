@@ -58,7 +58,7 @@ const Tank = ({route}) => {
         <ScrollView>
           <TouchableOpacity
             onPress={() => {
-              navigation.push('LeftDay');
+              navigation.push('LeftDay', {data});
             }}>
             <View
               style={{
