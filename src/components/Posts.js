@@ -78,11 +78,7 @@ const Posts = ({}) => {
         alignItems: 'center',
       }}>
       {templateList.map((data, index) => {
-        if (data.leftDay <= 0) {
-          return <Template key={index} data={data} />;
-        } else {
-          return <NewTemplate key={index} data={data} />;
-        }
+        return <NewTemplate key={index} data={data} />;
       })}
     </View>
   );

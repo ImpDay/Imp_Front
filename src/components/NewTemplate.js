@@ -10,20 +10,32 @@ import '../screens/ignore';
 const NewTemplate = ({data}) => {
   const navigation = useNavigation();
   let str = '';
-  let str1 = 'days left';
-  let str2 = 'day left';
-  if (data.leftDay > 1) {
-    str = str1;
+  if (data.leftDay < -1) {
+    str = `${-data.leftDay}days passed`;
+  } else if (data.leftDay < 0) {
+    str = `${-data.leftDay}day passed`;
+  } else if (data.leftDay == 0) {
+    str = 'Today';
+  } else if (data.leftDay == 1) {
+    str = `${data.leftDay}day left`;
   } else {
-    str = str2;
+    str = `${data.leftDay}days left`;
+  }
+
+  let borderCorlor = 'white';
+  if (data.leftDay <= 0) {
+    borderCorlor = '#88ff88';
   }
   return (
     <View style={{position: 'relative', padding: '0.5%', width: 160}}>
-      <TouchableOpacity onPress={()=>{navigation.push("Tank", {data})}}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.push('Tank', {data});
+        }}>
         <View
           style={{
             position: 'relative',
-            borderColor: 'white',
+            borderColor: borderCorlor,
             borderWidth: 3,
             height: '100%',
             borderRadius: 10,
@@ -70,9 +82,7 @@ const NewTemplate = ({data}) => {
             </ProgressCircle>
           </View>
           <View style={{paddingTop: '18%', paddingBottom: '15%'}}>
-            <Text style={{color: '#99ffcc', fontWeight: 'bold'}}>
-              {data.leftDay} {str}
-            </Text>
+            <Text style={{color: '#99ffcc', fontWeight: 'bold'}}>{str}</Text>
           </View>
         </View>
       </TouchableOpacity>
