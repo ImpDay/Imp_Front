@@ -17,6 +17,7 @@ const NewTemplate = ({data}) => {
   } else {
     str = str2;
   }
+  console.log(data);
   return (
     <View style={{position: 'relative', padding: '0.5%', width: 160}}>
       <TouchableOpacity>

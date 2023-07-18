@@ -24,34 +24,51 @@ const Posts = ({}) => {
   const navigation = useNavigation();
   const [templateList, setTemplateList] = useState([]);
 
-  useEffect(() => {
-    const fetchData = () => {
-      const url = 'http://172.10.5.148:443/templates/myTemplates';
-      axios
-        .get(url)
-        .then(response => {
-          const parsedArray = response.data;
-          const updatedTemplateList = parsedArray.map(element => {
-            const templateItem = new TemplateData(
-              element.templateId,
-              element.templateName,
-              element.lastRecordedTime,
-              element.writePeriod,
-            );
-            templateItem.leftDay = getLeftDay(
-              templateItem.lastRecordedTime,
-              templateItem.writePeriod,
-            );
-            return templateItem;
-          });
-          setTemplateList(updatedTemplateList);
-        })
-        .catch(error => {
-          console.error(error);
-          // TODO: 에러 처리
-        });
-    };
+  const fetchData = async () => {
+    const url = 'http://172.10.5.148:443/templates/myTemplates';
+    try {
+      const response = await axios.get(url);
+      const parsedArray = response.data;
 
+      const updatedTemplateList = await Promise.all(
+        parsedArray.map(async element => {
+          const templateItem = new TemplateData(
+            element.templateId,
+            element.templateName,
+            element.lastRecordedTime,
+            element.writePeriod,
+          );
+
+          templateItem.leftDay = getLeftDay(
+            templateItem.lastRecordedTime,
+            templateItem.writePeriod,
+          );
+          const templateScore = await axios
+            .get(
+              `http://172.10.5.148:443/templates/${templateItem.templateId}/averageScore`,
+            )
+            .then(response => {
+              console.log('This is response data : ' + response.data);
+              return response.data;
+            })
+            .catch(error => {
+              // 요청 실패 또는 오류 발생 시 처리할 로직
+              return 0;
+            });
+          console.log('this is template score : ' + templateScore);
+          templateItem.templatescore = templateScore;
+
+          return templateItem;
+        }),
+      );
+
+      setTemplateList(updatedTemplateList);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
     fetchData();
   }, []);
 
