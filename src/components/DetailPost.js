@@ -24,6 +24,8 @@ class QAData {
 }
 
 const DetailPost = ({data, templateData}) => {
+  // TODO: 상태 제대로 처리하기 지금 땜빵
+  const [recordedDays, setrecordedDays] = useState();
   console.log('----------This is detailpost----------');
   console.log(data);
   console.log(templateData);
@@ -49,6 +51,7 @@ const DetailPost = ({data, templateData}) => {
         }
       }
       console.log('This is the length of quesInfo: ' + quesInfo.length);
+      setrecordedDays(quesInfo);
     } catch (error) {
       console.error(error);
     }
