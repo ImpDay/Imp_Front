@@ -19,39 +19,27 @@ class QuestionData {
   }
 }
 
-const questionList = [];
+// const questionList = [];
 
 const LeftDay = ({route}) => {
   const {data} = route.params;
   const navigation = useNavigation();
 
-  const [quesInfo, setQuesInfo] = useState([
-    {id: 1, question: '오늘 하루는?', answer: ''},
-    {id: 2, question: '오늘 맛있었던 음식?', answer: ''},
-    {id: 3, question: '가장 재밌던 순간?', answer: ''},
-    {id: 4, question: '가장 인상깊었던 순간?', answer: ''},
-    {question: '좋게 들은 노래는?', answer: ''},
-    {question: '점심은 무엇을?', answer: ''},
+  const [questionList, setquestionList] = useState([
+    new QuestionData(1, '오늘 뭐했어'),
   ]);
-  const [recordedDays, setrecordedDays] = useState();
 
   const fetchData = async () => {
     questionList.length = 0;
-    quesInfo.length = 0;
     const url = `http://172.10.5.148:443/questions/${data.templateId}`;
     try {
       const response = await axios.get(url);
       const parsedArray = response.data;
-      for (const element of parsedArray) {
-        console.log(`This is element : ${element}`);
-        const questionData = new QuestionData(
-          element.questionId,
-          element.questionContent,
-        );
-        questionList.push(questionData);
-      }
-      console.log('This is the length of quesInfo: ' + quesInfo.length);
-      setrecordedDays(questionList);
+      const updatedQuestionList = parsedArray.map(element => {
+        return new QuestionData(element.questionId, element.questionContent);
+      });
+      console.log(questionList);
+      setquestionList(updatedQuestionList);
     } catch (error) {
       console.error(error);
     }
@@ -91,6 +79,7 @@ const LeftDay = ({route}) => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
+            createNewRecord(questionList, data.templateId);
             navigation.push('Home');
           }}>
           <View>
@@ -146,13 +135,14 @@ const LeftDay = ({route}) => {
                     placeholder="pleas write your own answer..."
                     multiline={true}
                     onChangeText={text => {
-                      const updatedQuesInfo = quesInfo.map(item => {
-                        if (item.id === data.id) {
+                      const updatedQuesInfo = questionList.map(item => {
+                        if (item.questionId === data.questionId) {
                           return {...item, answer: text};
                         }
                         return item;
                       });
-                      setQuesInfo(updatedQuesInfo);
+                      // questionList = updatedQuesInfo;
+                      setquestionList(updatedQuesInfo);
                     }}
                     value={data.answer}
                   />
@@ -165,5 +155,35 @@ const LeftDay = ({route}) => {
     </SafeAreaView>
   );
 };
+
+async function createNewRecord(questionList, templateId) {
+  // TODO: Record 만들기
+  // TODO: 받아온 RecordId 가져와서 answer 객체들 생성하기
+  console.log(`create new record and answer!!!`);
+  const postData = {
+    templateId: templateId,
+  };
+  const url = `http://172.10.5.148:443/records`;
+  let newRecordId;
+  try {
+    // create record
+    const response = await axios.post(url, postData);
+    console.log(response.data.recordId);
+    newRecordId = response.data.recordId;
+  } catch (error) {
+    console.error(error);
+  }
+  for (const questionData of questionList) {
+    const postAnswerUrl = `http://172.10.5.148:443/answers`;
+    const answerData = {
+      answer: questionData.answer,
+      questionId: questionData.questionId,
+      recordId: newRecordId,
+    };
+    console.log(`This is answer : ${answerData.answer}`);
+    // create answer
+    await axios.post(postAnswerUrl, answerData);
+  }
+}
 
 export default LeftDay;

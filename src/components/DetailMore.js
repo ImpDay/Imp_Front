@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {View, Text, TextInput, ScrollView} from 'react-native';
 
 const DetailMore = ({data}) => {
-  console.log(`This is detail more data : ${data}`);
   return (
     <View
       style={{
