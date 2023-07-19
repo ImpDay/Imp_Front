@@ -6,7 +6,11 @@ import Record from './Record';
 import {useNavigation} from '@react-navigation/native';
 
 const Tank = ({route}) => {
+  // console.log(
+  //   `This is template [${data.templateId}] [${data.templateName}] leftDay : ${data.leftDay}]`,
+  // );
   const {data} = route.params;
+
   const navigation = useNavigation();
   let str = '';
   if (data.leftDay < -1) {

@@ -38,7 +38,9 @@ const Posts = ({}) => {
             element.lastRecordedTime,
             element.writePeriod,
           );
-
+          console.log(
+            `Template [${templateItem.templateName}] period : ${templateItem.writePeriod}`,
+          );
           templateItem.leftDay = getLeftDay(
             templateItem.lastRecordedTime,
             templateItem.writePeriod,

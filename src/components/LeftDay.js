@@ -21,10 +21,13 @@ class QuestionData {
 
 // const questionList = [];
 
-const LeftDay = ({data}) => {
-  
+const LeftDay = ({route}) => {
+  // console.log(`This is left day data.templateId : ${data.templateId}`);
+  const {data} = route.params;
   const navigation = useNavigation();
-
+  console.log(
+    `This is template [${data.templateId}] [${data.templateName}] leftDay : ${data.leftDay}]`,
+  );
   const [questionList, setquestionList] = useState([
     new QuestionData(1, '오늘 뭐했어'),
   ]);

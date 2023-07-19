@@ -8,6 +8,9 @@ import ProgressCircle from 'react-native-progress-circle';
 import '../screens/ignore';
 
 const NewTemplate = ({data}) => {
+  // console.log(
+  //   `This is template [${data.templateId}] [${data.templateName}] leftDay : ${data.leftDay}]`,
+  // );
   const navigation = useNavigation();
   let str = '';
   if (data.leftDay < -1) {
