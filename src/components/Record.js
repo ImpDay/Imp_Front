@@ -30,7 +30,17 @@ const Record = ({templateData}) => {
         );
         recordList.push(record);
       });
+      parsedArray.sort((a, b) => {
+        // a와 b의 createdTime 값을 비교하여 정렬 순서를 결정합니다.
+        // createdTime은 날짜 형식이어야 합니다.
 
+        const timeA = new Date(a.createdTime).getTime();
+        const timeB = new Date(b.createdTime).getTime();
+
+        // 늦은 순으로 정렬하려면 b를 먼저 오도록 설정합니다.
+        // 오래된 순으로 정렬하려면 a를 먼저 오도록 설정합니다.
+        return timeB - timeA;
+      });
       setrecordList(parsedArray);
     } catch (error) {
       console.error(error);

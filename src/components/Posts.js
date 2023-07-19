@@ -57,10 +57,15 @@ const Posts = ({}) => {
               return 0;
             });
           templateItem.templatescore = templateScore;
-
           return templateItem;
         }),
       );
+
+      updatedTemplateList.sort((a, b) => {
+        const timeA = new Date(a.leftDay).getTime();
+        const timeB = new Date(b.leftDay).getTime();
+        return timeA - timeB;
+      });
 
       setTemplateList(updatedTemplateList);
     } catch (error) {
@@ -87,18 +92,11 @@ const Posts = ({}) => {
 };
 
 function getLeftDay(date, writePeriod) {
-  // 오늘 날짜의 밀리초 단위로 설정 (시간을 무시)
   const today = new Date().setHours(0, 0, 0, 0);
-
-  // 비교할 날짜의 밀리초 단위로 설정 (시간을 무시)
   const otherDate = new Date(date).setHours(0, 0, 0, 0);
-
-  // 날짜 간의 일 수 차이 계산
   const timeDiff = Math.abs(today - otherDate);
   const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-
   return writePeriod - daysDiff;
 }
 
-const updateTemplateList = () => {};
 export default Posts;
