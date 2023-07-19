@@ -2,7 +2,10 @@
 [작성 중....]
 > FlowCamp Week3 2분반
 
-- 질문 템플릿을 통해 시간에 따라 변해하는 동일한 질문에 대한 답변의 변화를 볼 수 있는 React-Native 기반의 안드로이드 어플리케이션입니다.
+- React-Native 기반의 안드로이드 일기 작성 어플리케이션입니다.
+- 시간의 변화에 따른 동일한 질문에 따른 답변을 보고 싶어서 시작하게 된 앱니다.
+
+- 질문 템플릿을 만들어, 설정한 주기에 따라 동일한 질문에 대한 답변을 계속해서 작성할 수 있습니다.
 - 그룹에 가입, 생성 및 탈퇴할 수 있습니다.
 - 그룹 멤버들 간 미션에 맞게 공유되는 한줄 일기를 작성하고 좋아요로 상호작용할 수 있습니다.
 - 그룹 별로 닉네임과 한 줄 소개를 다르게 설정하여 프로필을 만들 수 있습니다.
@@ -11,16 +14,16 @@
 
 - [오지환](https://github.com/jihwan01)
 - [엄창용](https://github.com/um8389)
-- [백엔드 레포지토리](https://github.com/weGround/weG_background)
+- [백엔드 레포지토리]([https://github.com/weGround/weG_background](https://github.com/ImpDay/Imp_Server))
 
 ### B. 개발 환경
 
 - OS: Windows 11(22H2)
-- Framework : Kotlin, nest.js
-- Target : Android
-- Language: Typescript
+- Framework : React-native, express.js
+- Target : Android & IOS
+- Language: Java Script
 - IDE : Android Studio, VScode
-- Database : mongoDB
+- Database : Mysql
 
 ---
 
@@ -28,8 +31,9 @@
 
 ### 1. 로그인 화면
 
-| ![](./readme_img/login_1.jpg) | ![CGC_gallery_floating](./readme_img/login_2.jpg) | ![CGC_gallery_silder](./readme_img/login_kakao.jpg) |
-| ----------------------------- | ------------------------------------------------- | --------------------------------------------------- |
+| ![KakaoTalk_20230717_220540837](https://github.com/ImpDay/Imp_Front/assets/61741090/6ba370ad-d9ee-4eb4-9c01-7566d162935d) |![KakaoTalk_20230717_220540837_01](https://github.com/ImpDay/Imp_Front/assets/61741090/b6012609-7c45-48b3-9b9d-6753db9eb380)
+ 
+| ----------------------------- | ------------------------------------------------- |
 
 #### Major features
 
