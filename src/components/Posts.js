@@ -50,9 +50,6 @@ const Posts = ({}) => {
               `http://172.10.5.148:443/templates/${templateItem.templateId}/averageScore`,
             )
             .then(response => {
-              console.log('-----------------------------');
-              console.log(response.data);
-              console.log('-----------------------------');
               if (response.data == null) {
                 return 0;
               }

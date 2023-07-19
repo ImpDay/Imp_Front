@@ -8,10 +8,12 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import './ignore';
 
 class userData {
-  constructor(nickname, follower, following) {
+  constructor(nickname, followerNum, followingNum, followers, followings) {
     this.nickname = nickname;
-    this.followerNum = follower;
-    this.followingNum = following;
+    this.followerNum = followerNum;
+    this.followingNum = followingNum;
+    this.followers = followers;
+    this.followings = followings;
   }
 }
 let userProfile = new userData('Default', '100', '100');
@@ -33,7 +35,13 @@ const Profile = ({navigation}) => {
 
       followingNum = followings.data.length;
       followerNum = followers.data.length;
-      userProfile = new userData(nickname, followerNum, followingNum);
+      userProfile = new userData(
+        nickname,
+        followerNum,
+        followingNum,
+        followers.data,
+        followings.data,
+      );
       console.log(`${nickname} | ${followingNum} | ${followerNum}`);
       setuserProfiles(userProfile);
     } catch (error) {
@@ -77,6 +85,8 @@ const Profile = ({navigation}) => {
           profileImage={require('../../images/place/image2.jpeg')}
           followingNum={userProfiles?.followingNum || 0}
           followerNum={userProfiles?.followerNum || 0}
+          followings={userProfiles?.followings || []}
+          followers={userProfiles?.followers || []}
         />
       </View>
       <ProfileButton

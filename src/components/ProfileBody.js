@@ -2,13 +2,22 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 
-const ProfileBody = ({name, profileImage, followingNum, followerNum}) => {
+const ProfileBody = ({
+  name,
+  profileImage,
+  followingNum,
+  followerNum,
+  followings,
+  followers,
+}) => {
   const navigation = useNavigation();
   console.log('------------------');
   console.log(`This is name : ${name}`);
   console.log(`This is followingNum : ${followingNum}`);
   console.log(`This is followerNum : ${followerNum}`);
   console.log(`This is profileImage : ${profileImage}`);
+  console.log(`This is followings : ${followings}`);
+  console.log(`This is followers : ${followers}`);
   console.log('------------------');
   return (
     <View>
@@ -64,7 +73,7 @@ const ProfileBody = ({name, profileImage, followingNum, followerNum}) => {
             }}>
             <TouchableOpacity
               onPress={() => {
-                navigation.push('Follower');
+                navigation.push('Follower', {followers: followers});
               }}>
               <Text
                 style={{
@@ -83,7 +92,7 @@ const ProfileBody = ({name, profileImage, followingNum, followerNum}) => {
           <View style={{position: 'relative', flexDirection: 'column'}}>
             <TouchableOpacity
               onPress={() => {
-                navigation.push('Following');
+                navigation.push('Following', {followings: followings});
               }}>
               <Text
                 style={{
