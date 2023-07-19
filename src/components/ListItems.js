@@ -57,18 +57,25 @@ const ListItems = ({data}) => {
   const level3 = '#669966'; //41~60
   const level4 = '#336633'; //61~80
   const level5 = '#003300'; //81~100
-  let array = data.weekscore;
+  let array = data.weekScores;
+  console.log('--------------------------------');
+  console.log(data);
+  // variable
+  let friendImage = data.friendImage;
+  let friendName = data.friendName;
   return (
     <View style={styles.listItemContainer}>
       <View style={styles.profileImgContainer}>
         <Image
-          source={data.friendImage}
+          source={friendImage || require('../../images/place/image3.jpeg')}
           style={{width: 40, height: 40, borderRadius: 15}}
         />
       </View>
       <View style={{flexDirection: 'column', alignItems: 'start'}}>
         <View style={styles.firstLine}>
-          <Text style={{color: 'white'}}>{data.friendName}</Text>
+          <Text style={{color: 'white'}}>
+            {data && data.friendName ? friendName : 'Loading...'}
+          </Text>
           <Text
             style={{
               color: '#ccdd11',

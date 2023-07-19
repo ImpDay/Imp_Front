@@ -75,7 +75,7 @@ const Calendar = () => {
         }}
         markedDates={marked}
         onDayPress={() => {
-          navigation.push();
+          // navigation.push();
         }}
       />
     </View>
