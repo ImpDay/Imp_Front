@@ -8,6 +8,7 @@ const ProfileBody = ({name, profileImage, followingNum, followerNum}) => {
   console.log(`This is name : ${name}`);
   console.log(`This is followingNum : ${followingNum}`);
   console.log(`This is followerNum : ${followerNum}`);
+  console.log(`This is profileImage : ${profileImage}`);
   console.log('------------------');
   return (
     <View>
@@ -38,7 +39,7 @@ const ProfileBody = ({name, profileImage, followingNum, followerNum}) => {
               {name}
             </Text>
             <Image
-              source={require('../../images/place/image2.jpeg')}
+              source={profileImage}
               style={{width: 130, height: 130, borderRadius: 90}}
             />
           </View>

@@ -77,7 +77,6 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
 
   const onSignIn = async () => {
-    
     if (userId == '' || password == '') {
       console.log('좀 쓰고 누르셈');
     } else {
@@ -145,6 +144,7 @@ const LoginPage = () => {
             borderRadius: 6,
             fontSize: 14,
           }}
+          secureTextEntry={true}
           onChangeText={text => setPassword(text)}
           value={password}
         />
@@ -174,13 +174,13 @@ const LoginPage = () => {
       </View>
       <View style={styles.simpleLoginBox}>
         <View
-          style={{flex: 1, borderBottomWidth: 1, borderBottomColor: '#dddddd'}}
+          style={{marginLeft:'20.5%',flex: 1, borderBottomWidth: 1, borderBottomColor: '#dddddd'}}
         />
         <Text style={{paddingHorizontal: 10, color: '#dddddd'}}>
           간편 로그인
         </Text>
         <View
-          style={{flex: 1, borderBottomWidth: 1, borderBottomColor: '#dddddd'}}
+          style={{marginRight:'20.5%',flex: 1, borderBottomWidth: 1, borderBottomColor: '#dddddd'}}
         />
       </View>
       <View style={styles.kakaoLoginButton}>

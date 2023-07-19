@@ -21,8 +21,8 @@ class QuestionData {
 
 // const questionList = [];
 
-const LeftDay = ({route}) => {
-  const {data} = route.params;
+const LeftDay = ({data}) => {
+  
   const navigation = useNavigation();
 
   const [questionList, setquestionList] = useState([
