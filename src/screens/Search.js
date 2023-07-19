@@ -2,19 +2,39 @@ import { View, Text, SafeAreaView, ScrollView, TextInput, TouchableOpacity, Imag
 import React, { useEffect, useState } from 'react'
 import Ionic from 'react-native-vector-icons/Ionicons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
+import { Axios } from 'axios'
 
 
-const friendInfo=[{username:'changyong', userImage:require('../../images/place/image1.jpeg')},{username:'changwan', userImage:require('../../images/place/image1.jpeg')},{username:'yejin', userImage:require('../../images/place/image1.jpeg')},{username:'ohhyun', userImage:require('../../images/place/image1.jpeg')},{username:'jimin', userImage:require('../../images/place/image1.jpeg')},{username:'seonkyu', userImage:require('../../images/place/image1.jpeg')},{username:'keunwon', userImage:require('../../images/place/image1.jpeg')},{username:'jihwan', userImage:require('../../images/place/images7.jpeg')},{username:'jihwan', userImage:require('../../images/place/images9.jpeg')},{username:'jihwan', userImage:require('../../images/place/images10.jpeg')},{username:'jihwan', userImage:require('../../images/place/image1.jpeg')}]
+const friendInfo=[{username:'changyong', userImage:require('../../images/place/image1.jpeg'), isFollowing:true},{username:'changwan', userImage:require('../../images/place/image1.jpeg'), isFollowing:false},{username:'yejin', userImage:require('../../images/place/image1.jpeg'), isFollowing:false},{username:'ohhyun', userImage:require('../../images/place/image1.jpeg'), isFollowing:true},{username:'jimin', userImage:require('../../images/place/image1.jpeg'), isFollowing:false},{username:'seonkyu', userImage:require('../../images/place/image1.jpeg'), isFollowing:true},{username:'keunwon', userImage:require('../../images/place/image1.jpeg'), isFollowing:false},{username:'jihwan', userImage:require('../../images/place/images7.jpeg'), isFollowing:true},{username:'jihwan', userImage:require('../../images/place/images9.jpeg'), isFollowing:false},{username:'jihwan', userImage:require('../../images/place/images10.jpeg'), isFollowing:false},{username:'jihwan', userImage:require('../../images/place/image1.jpeg'), isFollowing:true}]
 
 const Search = ({navigation}) => {
+  const [follow, setFollow] = useState(friendInfo.isFollowing);
   const [friend, setFriend] = useState('');
   const [myArray, setMyArray] = useState([]);
+
+  const handleFollow = async () => {
+    try {
+      Axios.post('', {
+        
+      },
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }).then(response => {
+        setFollow(!follow);
+      }).catch(error => console.log(error));
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
   const handleAddItem = () => {
     setMyArray([]);
     friendInfo.map((data, index)=> {
       if ((friend !== '')&&(friend===data.username)) {
-        setMyArray([...myArray, data]);
+        const matchedArray = friendInfo.filter(data => data.username === friend);
+        setMyArray(matchedArray);
         setFriend('');
       }
     })
@@ -99,10 +119,10 @@ const Search = ({navigation}) => {
                           </Text>
                       </View>
                       <View style={{position:'relative',width:'20%', height:'70%', backgroundColor:'black', justifyContent:'center', marginLeft:'7%',}}>
-                          <TouchableOpacity>
+                          <TouchableOpacity onPress={handleFollow}>
                               <View style={{position:'relative',width:'65%', height:'85%',marginLeft:'4%', marginTop:'2%', backgroundColor:'#333333', borderRadius:10, justifyContent:'center', alignItems:'center'}}>
                                   <Text style={{color:'#1199ff', fontWeight:'bold', fontSize:13}}>
-                                      follow
+                                      {follow ? '팔로잉':'팔로우'}
                                   </Text>
                               </View>
                           </TouchableOpacity>

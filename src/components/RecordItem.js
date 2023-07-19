@@ -1,6 +1,7 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
+import Feather from 'react-native-vector-icons/Feather'
 
 const RecordItem = ({data, templateData}) => {
   const navigation = useNavigation();
@@ -14,16 +15,18 @@ const RecordItem = ({data, templateData}) => {
       }}>
       <View
         style={{
-          marginTop: '1.5%',
-          marginBottom: '1.5%',
-          backgroundColor: '#555555',
+          marginTop: '3%',
+          marginBottom: '3%',
+          backgroundColor: '#dddddd',
+          paddingLeft:'7%',
           width: 270,
-          height: 150,
+          height: 50,
           alignItems: 'center',
-          justifyContent: 'center',
-          borderRadius: 16,
+          borderRadius: 20,
+          flexDirection:'row'
         }}>
-        <Text style={{color: '#dddddd', fontWeight: 'bold', fontSize: 30}}>
+        <Feather name="navigation" style={{ color:'black', marginRight:'7%',fontSize: 22 }}/>
+        <Text style={{color: 'black', fontWeight: 'bold', fontSize: 23}}>
           {formattedDate}
         </Text>
       </View>

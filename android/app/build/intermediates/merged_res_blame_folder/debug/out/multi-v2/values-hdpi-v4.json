@@ -4,7 +4,7 @@
             "outputFile": "com.flowcamp2.app-mergeDebugResources-35:/values-hdpi-v4/values-hdpi-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\user\\.gradle\\caches\\transforms-3\\69332e46376ae4404619068bb0b670d2\\transformed\\appcompat-1.4.1\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "source": "/Users/eomchang-yong/.gradle/caches/transforms-3/69332e46376ae4404619068bb0b670d2/transformed/appcompat-1.4.1/res/values-hdpi-v4/values-hdpi-v4.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
